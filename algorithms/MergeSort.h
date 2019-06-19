@@ -21,11 +21,17 @@ void mergeSort(T arr[], int n) {
 // 递归使用归并排序,对arr[l...r]的范围进行排序
 template<typename T>
 void __mergeSort(T arr[], int l, int r) {
-    if (l >= r)
+//    if (l >= r)
+//        return;
+// 优化 对于小规模数组,使用插入排序
+    if( r - l <= 15 ){
+        insertionSort(arr, l, r);
         return;
+    }
     int mid = (l + r) / 2;
     __mergeSort(arr, l, mid);
     __mergeSort(arr, mid + 1, r);
+    if(arr[mid]>arr[mid+1])//优化近乎有序的数组时
     __merge(arr, l, mid, r);
 }
 
