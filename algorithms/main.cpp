@@ -29,11 +29,11 @@ void selectionSort(T arr[], int n) {
 
 int main() {
 
-    int n = 100000;
+    int n = 1000000;
     int *arr = SortTestHepler::generateRandomArray(n, 0, n);
 //    int *arr = SortTestHepler::generateNearlyOrderedArray(n, 200);
 //    int *arr2 = SortTestHepler::copyIntArray(arr, n);
-    int *arr3 = SortTestHepler::copyIntArray(arr, n);
+    int *arrShell = SortTestHepler::copyIntArray(arr, n);
 //    int *arr4 = SortTestHepler::copyIntArray(arr, n);
 //    int *arrBubble = SortTestHepler::copyIntArray(arr, n);
     int *arrMerge = SortTestHepler::copyIntArray(arr, n);
@@ -42,14 +42,14 @@ int main() {
 //    SortTestHepler::testSort("insertionSort", insertionSort, arr2, n);
 //    SortTestHepler::testSort("cockTailSort", cockTailSort, arr4, n);
 //    SortTestHepler::testSort("bubbleSort", bubbleSort2, arrBubble, n);
-    SortTestHepler::testSort("shellSort", shellSort, arr3, n);
+    SortTestHepler::testSort("shellSort", shellSort, arrShell, n);
     SortTestHepler::testSort("mergeSort", mergeSort, arrMerge, n);
-    delete (arr);
+    delete[] arr;
 //    delete (arr2);
-    delete (arr3);
+    delete[] arrShell;
 //    delete (arr4);
 //    delete (arrBubble);
-    delete (arrMerge);
+    delete[] arrMerge;
 
 
     /*

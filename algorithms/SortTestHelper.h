@@ -65,5 +65,5 @@ void testSort(const std::string &sortName, void(*sort)(T[], int), T arr[], int n
         std::copy(a, a+n, arr);
         return arr;
     }
-}
+};
 #endif //ALGORITHMS_SORTTESTHELPER_H
