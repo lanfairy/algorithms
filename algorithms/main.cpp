@@ -6,7 +6,7 @@
 #include "InsertionSort.h"
 #include "ShellSort.h"
 #include "MergeSort.h"
-
+#include "QuickSort.h"
 
 
 
@@ -27,7 +27,7 @@ void selectionSort(T arr[], int n) {
     }
 }
 
-int main() {
+int main1() {
 
     int n = 1000000;
     int *arr = SortTestHepler::generateRandomArray(n, 0, n);
@@ -64,5 +64,48 @@ int main() {
     SortTestHepler::printArray(d,4);
     */
 
+    return 0;
+}
+int main(){
+    int n = 1000000;
+    // 测试1 一般性测试
+    cout<<"Test for Random Array, size = "<<n<<", random range [0, "<<n<<"]"<<endl;
+    int* arr1 = SortTestHepler::generateRandomArray(n,0,n);
+    int* arr2 = SortTestHepler::copyIntArray(arr1,n);
+
+    SortTestHepler::testSort("Merge Sort", mergeSort, arr1, n);
+    SortTestHepler::testSort("Quick Sort", quickSort, arr2, n);
+
+    delete[] arr1;
+    delete[] arr2;
+
+    cout<<endl;
+
+
+    // 测试2 测试近乎有序的数组
+    int swapTimes = 100;
+    cout<<"Test for Random Nearly Ordered Array, size = "<<n<<", swap time = "<<swapTimes<<endl;
+    arr1 = SortTestHepler::generateNearlyOrderedArray(n,swapTimes);
+    arr2 = SortTestHepler::copyIntArray(arr1, n);
+
+    SortTestHepler::testSort("Merge Sort", mergeSort, arr1, n);
+    SortTestHepler::testSort("Quick Sort", quickSort, arr2, n);
+
+    delete[] arr1;
+    delete[] arr2;
+
+    cout<<endl;
+
+
+    // 测试3 测试存在包含大量相同元素的数组
+    cout<<"Test for Random Array, size = "<<n<<", random range [0,10]"<<endl;
+    arr1 = SortTestHepler::generateRandomArray(n,0,10);
+    arr2 = SortTestHepler::copyIntArray(arr1, n);
+
+    SortTestHepler::testSort("Merge Sort", mergeSort, arr1, n);
+    SortTestHepler::testSort("Quick Sort", quickSort, arr2, n);
+
+    delete[] arr1;
+    delete[] arr2;
     return 0;
 }
